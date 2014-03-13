@@ -1,0 +1,147 @@
+<head>
+    <script src="spin.js"></script>
+
+<style media="screen" type="text/css">	
+	#content{
+    height:150px;
+    width:150px;
+    font-weight:bold; 
+    text-align:center;
+    background-color: white;
+    padding:0;
+    margin:0;
+    position:absolute;
+}
+#hoverbar{
+    height:150px;
+    width:150px;
+    font-weight:bold; 
+    text-align:center;
+    background-color: white;
+    position:absolute;
+    bottom:0;
+    margin:0;
+    padding:0;
+    visibility:hidden;
+}
+#content:hover > #hoverbar{
+    visibility:visible;
+}
+</style>
+</head>
+
+
+<div id="content" style="font-size:25pt;">
+<br><br><br>
+	<% if (current_user.workhour)/8 > 0 %>
+		<%= (current_user.workhour)/8 %> 
+	<% end %>
+	<% if (current_user.workhour)%8 > 0 %>
+		' <%= (current_user.workhour)%8 %>
+	<% end %>
+		<div style="font-size:10pt;">
+			<% if (current_user.workhour)/8 == 1 %>
+				&ensp;Day
+			<% else if (current_user.workhour)/8 > 1 %>
+				&ensp;Days
+			<% end %>
+			<% end %>
+			<% if (current_user.workhour)%8 > 0 %>
+				&emsp;  Hours
+			<% end %>
+		</div>
+		<div id="hoverbar">
+		<br><br><br>
+			<% if (current_user.workhour - current_user.ideal_workhour) > 0 %>
+				<%= (current_user.workhour - current_user.ideal_workhour) %>
+				<div style="font-size:10pt;">
+					Hours Lead
+				</div> 
+			<% else if 0 > (current_user.workhour - current_user.ideal_workhour) %>
+				<%= (current_user.ideal_workhour - current_user.workhour) %>
+				<div style="font-size:10pt;">
+					Hours Lag
+				</div> 
+			<% else %>
+				<div style="font-size:20pt;">
+					Ideal
+				</div> 
+			<%end%>
+			<%end%>
+		</div>
+</div>
+<div id="foo" style="height:150px; width:150px;">
+</div>
+
+<% if current_user.workhour > current_user.ideal_workhour %>
+<script>
+var opts = {
+  lines: 17, // The number of lines to draw
+  length: 0, // The length of each line
+  width: 10, // The line thickness
+  radius: 65, // The radius of the inner circle
+  corners: 1, // Corner roundness (0..1)
+  rotate: 0, // The rotation offset
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#009900', // #rgb or #rrggbb or array of colors
+  speed: 1.1, // Rounds per second
+  trail: 100, // Afterglow percentage
+  shadow: true, // Whether to render a shadow
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'spinner', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: 'auto', // Top position relative to parent in px
+  left: 'auto' // Left position relative to parent in px
+};
+var target = document.getElementById('foo');
+var spinner = new Spinner(opts).spin(target);
+</script>
+<% else if current_user.workhour == current_user.ideal_workhour %>
+<script>
+var opts = {
+  lines: 17, // The number of lines to draw
+  length: 0, // The length of each line
+  width: 10, // The line thickness
+  radius: 65, // The radius of the inner circle
+  corners: 1, // Corner roundness (0..1)
+  rotate: 0, // The rotation offset
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#006699', // #rgb or #rrggbb or array of colors
+  speed: 1.1, // Rounds per second
+  trail: 100, // Afterglow percentage
+  shadow: true, // Whether to render a shadow
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'spinner', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: 'auto', // Top position relative to parent in px
+  left: 'auto' // Left position relative to parent in px
+};
+var target = document.getElementById('foo');
+var spinner = new Spinner(opts).spin(target);
+</script>
+<% else %>
+<script>
+var opts = {
+  lines: 17, // The number of lines to draw
+  length: 0, // The length of each line
+  width: 10, // The line thickness
+  radius: 65, // The radius of the inner circle
+  corners: 1, // Corner roundness (0..1)
+  rotate: 0, // The rotation offset
+  direction: 1, // 1: clockwise, -1: counterclockwise
+  color: '#990000', // #rgb or #rrggbb or array of colors
+  speed: 1.1, // Rounds per second
+  trail: 100, // Afterglow percentage
+  shadow: true, // Whether to render a shadow
+  hwaccel: false, // Whether to use hardware acceleration
+  className: 'spinner', // The CSS class to assign to the spinner
+  zIndex: 2e9, // The z-index (defaults to 2000000000)
+  top: 'auto', // Top position relative to parent in px
+  left: 'auto' // Left position relative to parent in px
+};
+var target = document.getElementById('foo');
+var spinner = new Spinner(opts).spin(target);
+</script>
+<% end %>
+
+<% end %>

@@ -1,0 +1,19 @@
+<% @user ||= current_user %>
+
+<div style="font-size: 16px; line-height: 25px">
+<table>
+<tr>
+<td><u> Total Worktime : </u></td>
+<td><%= @user.workhour %> Hours</td>
+</tr>
+<tr>
+<td><u> Total Overtime : </u></td>
+<td><%= (@user.workhour + (@user.leave_count * 8) - @user.ideal_workhour) %> Hours</td>
+</tr>
+<tr>
+<td><u> Total Leave : </u></td>
+<td><%= @user.leave_count %> Days</td>
+</tr>
+</table> 
+</div>
+

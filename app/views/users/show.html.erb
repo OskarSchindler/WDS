@@ -1,0 +1,44 @@
+<% provide(:title, @user) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+	  <% if @user.designation == "1" %>
+		Project Leader
+	<% else if @user.designation == "2" %>
+		Developer
+	<% else %>
+		Tester
+	<% end %>
+	<%end%>
+
+	<span>
+ 	 <%= pluralize(current_user.microposts.count, "Action") %>
+	</span>
+    </section>
+
+<% if @user.id == current_user.id %>
+    <section>
+	<%= render 'shared/salary' %>
+	<%= render 'shared/stats' %>
+    </section>
+<% else %>
+    <section>
+	<%= render 'shared/stats' %>
+    </section>
+<% end %>
+  </aside>
+  <div class="span8">
+    
+    <% if @user.microposts.any? %>
+      <h3>Actions (<%= @user.microposts.count %>) </h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
+</div>

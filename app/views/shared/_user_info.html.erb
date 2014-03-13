@@ -1,0 +1,21 @@
+<a href="<%= user_path(current_user) %>">
+  <%= gravatar_for current_user, size: 70 %>
+</a>
+<h1>
+  <%= current_user.name %>
+</h1>
+<span>
+  <% if current_user.designation == "1" %>
+	Project Leader
+<% else if current_user.designation == "2" %>
+	Developer
+<% else %>
+	Tester
+<% end %>
+<%end%>
+</span>
+
+<span>
+  <%= link_to "My profile", current_user %>
+</span>
+

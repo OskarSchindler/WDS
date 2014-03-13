@@ -1,0 +1,56 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+
+	<% if current_user.visible == 1 %>
+		<section>
+        	<%= render 'shared/overtime' %>
+      		</section>
+	<% else if current_user.visible == 2 %>
+		<section>
+			<h5> Overtime is not available anymore... <h5>
+		</section>
+		<% else %>
+			<% if current_user.overtime_count == 10 %>
+			<section>
+				<h5> You are on Overtime today... <h5>
+			</section>
+			<% end %>
+		<% end %>
+	<% end %>
+	
+
+	<% if current_user.workhour > 0 %>
+      		<section>
+        	<%= render 'shared/indicator' %>
+      		</section>
+	<% end %>
+
+      <section>
+        <%= render 'shared/micropost_form' %>
+      </section>
+     
+
+    </aside>
+    <div class="span8">
+      <h3>News Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>  
+<% else %>
+  <div class="center hero-unit">
+	
+    <h1>Workday Scheduler</h1>
+    
+    <h2>Work hard, Let us handle the trivial things.</h2>
+   
+
+    <%= link_to "Sign up now!", signup_path, 
+                                class: "btn btn-large btn-primary" %>
+  </div>
+
+ 
+<% end %> 

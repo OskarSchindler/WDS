@@ -1,0 +1,26 @@
+<%= form_for(current_user) do |f|%>
+  <%= render 'shared/error_messages', object: f.object %>
+
+<div style="font-size: 16px; line-height: 25px">
+<h4><i>Statistics~</i></h4>
+<div style="display:none;">
+<%= user = (current_user.workhour + (current_user.leave_count * 8) - current_user.ideal_workhour) %>
+</div>
+<table>
+<tr>
+<td><u> Base Salary : </u></td>
+<td><%= (current_user.workhour - user)*100 %> Rs. </td>
+</tr>
+<tr>
+<td><u> O.T. Salary : </u></td>
+<td><%= user * 150 %> Rs.</td>
+</tr>
+<tr>
+<td><u> Total Salary : </u></td>
+<td><%= (current_user.workhour - user) * 100 + user * 150 %> Rs.</td>
+</tr>
+</table>
+
+</div>
+
+<% end %>
