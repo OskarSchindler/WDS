@@ -9,9 +9,9 @@
 
 	<% if current_user.leave == 0 %>
 		<br>
-		<%= f.submit "Take a Leave", class: "btn btn-primary" , data: { disable_with: 'Processing' } %>
+		<%= f.submit "Take an urgent non-paid leave", class: "btn btn-primary" , data: { disable_with: 'Processing' } %>
 		<br><br>
-		<%= f.submit "Apply for Leave", class: "btn btn-primary" , data: { disable_with: 'Processing' } %>
+		<%= f.submit "Take a paid leave", class: "btn btn-primary" , data: { disable_with: 'Processing' } %>
 		<% else if current_user.leave == 20 %>
 			<h5>Overtime Accepted...</h5>
 		<% else if current_user.leave == 21 %>

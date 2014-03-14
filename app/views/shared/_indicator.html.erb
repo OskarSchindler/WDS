@@ -37,7 +37,7 @@
 		<%= (current_user.workhour)/8 %> 
 	<% end %>
 	<% if (current_user.workhour)%8 > 0 %>
-		' <%= (current_user.workhour)%8 %>
+		| <%= (current_user.workhour)%8 %>
 	<% end %>
 		<div style="font-size:10pt;">
 			<% if (current_user.workhour)/8 == 1 %>

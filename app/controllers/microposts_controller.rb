@@ -8,7 +8,7 @@ class MicropostsController < ApplicationController
 	check = 0
 
 	if @micropost.trigger == 1
-		if params[:commit] == "Take a Leave"
+		if params[:commit] == "Take an urgent non-paid leave"
 
 			User.update_all("leave = 11,leave_count = leave_count + 1,overtime_count = 2" , :id => current_user )
 
@@ -57,7 +57,7 @@ class MicropostsController < ApplicationController
 
 			@micropost.save
 			flash[:success] = "Leave taken!"
-		else params[:commit] == "Apply for Leave"
+		else params[:commit] == "Take a paid leave"
 
 			User.update_all("leave = 121,overtime_count = 2" , :id => current_user )
 		
